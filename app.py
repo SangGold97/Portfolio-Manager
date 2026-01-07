@@ -32,7 +32,6 @@ from models import (
 )
 from price_service import price_service
 from storage import storage_service
-from charts import ChartBuilder
 
 
 # Configure logger
@@ -533,76 +532,6 @@ def render_asset_table():
     
 
 
-def render_charts():
-    """Render visualization charts."""
-    st.subheader("📈 Biểu Đồ Quản Lý Tài Sản")
-    
-    all_valuations = (
-        st.session_state.existing_valuations +
-        st.session_state.investment_valuations
-    )
-    
-    summary = st.session_state.portfolio_summary
-    
-    if not summary or not all_valuations:
-        st.info("Chưa có dữ liệu để hiển thị biểu đồ. Hãy thêm tài sản và cập nhật giá.")
-        return
-    
-    # Chart controls
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        y_axis_type = st.selectbox(
-            "Trục Y",
-            options=["value", "percent"],
-            format_func=lambda x: "Giá trị (VNĐ)" if x == "value" else "Tỷ lệ (%)",
-        )
-    
-    with col2:
-        show_detail = st.checkbox("Xem chi tiết", value=False)
-    
-    # Row 1: Overview charts
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        fig = ChartBuilder.create_portfolio_overview_chart(summary)
-        st.plotly_chart(fig, width="stretch")
-    
-    with col2:
-        fig = ChartBuilder.create_category_distribution_chart(
-            st.session_state.existing_valuations,
-            st.session_state.investment_valuations,
-        )
-        st.plotly_chart(fig, width="stretch")
-    
-    # Row 2: Combined chart
-    fig = ChartBuilder.create_combined_bar_line_chart(
-        all_valuations,
-        y_axis_type=y_axis_type,
-        show_detail=show_detail,
-    )
-    st.plotly_chart(fig, width="stretch")
-    
-    # Row 3: Profit/Loss charts
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        fig = ChartBuilder.create_profit_loss_chart(
-            st.session_state.investment_valuations
-        )
-        st.plotly_chart(fig, width="stretch")
-    
-    with col2:
-        fig = ChartBuilder.create_profit_loss_percent_chart(
-            st.session_state.investment_valuations
-        )
-        st.plotly_chart(fig, width="stretch")
-    
-    # Row 4: Holding period scatter
-    fig = ChartBuilder.create_holding_period_chart(all_valuations)
-    st.plotly_chart(fig, width="stretch")
-
-
 def main():
     """Main application entry point."""
     # Page config
@@ -624,14 +553,8 @@ def main():
     
     st.markdown("---")
     
-    # Tabs for main content
-    tab1, tab2 = st.tabs(["📋 Bảng Thống Kê", "📈 Biểu Đồ"])
-    
-    with tab1:
-        render_asset_table()
-    
-    with tab2:
-        render_charts()
+    # Asset table
+    render_asset_table()
     
     # Footer
     st.markdown("---")

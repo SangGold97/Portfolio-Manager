@@ -67,8 +67,7 @@ portfilio_manager/
     ├── models.py         # Pydantic data models
     ├── scraper.py        # Web scraping module
     ├── price_service.py  # Price calculation service
-    ├── storage.py        # Data persistence
-    └── charts.py         # Plotly chart builders
+    └── storage.py        # Data persistence
 ```
 
 ## 🎨 Theme
