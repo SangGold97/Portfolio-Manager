@@ -212,22 +212,6 @@ def render_sidebar():
         
         st.markdown("---")
         
-        # Add asset forms
-        st.subheader("➕ Thêm Tài Sản")
-        
-        asset_tab = st.radio(
-            "Loại tài sản",
-            ["Tài sản sẵn có", "Tài sản đầu tư"],
-            horizontal=True,
-        )
-        
-        if asset_tab == "Tài sản sẵn có":
-            render_existing_asset_form()
-        else:
-            render_investment_asset_form()
-        
-        st.markdown("---")
-        
         # Show current prices
         st.subheader("📊 Giá Hiện Tại")
         
@@ -242,6 +226,22 @@ def render_sidebar():
                     """)
         else:
             st.info("Nhấn 'Cập Nhật Giá' để xem giá hiện tại")
+        
+        st.markdown("---")
+        
+        # Add asset forms
+        st.subheader("➕ Thêm Tài Sản")
+        
+        asset_tab = st.radio(
+            "Loại tài sản",
+            ["Tài sản sẵn có", "Tài sản đầu tư"],
+            horizontal=True,
+        )
+        
+        if asset_tab == "Tài sản sẵn có":
+            render_existing_asset_form()
+        else:
+            render_investment_asset_form()
 
 
 def render_existing_asset_form():

@@ -21,4 +21,5 @@
 - Add logging by using loguru library, not `print()` statements
 - Keep functions under 20 lines; extract logic into helper functions
 - Generate code shortly, optimization
+- Generate code as required, without affecting the logic of other functions
 - All block code (code snippet) in all functions or methods should be separated by a new line and have comments (with #) before each of them.
