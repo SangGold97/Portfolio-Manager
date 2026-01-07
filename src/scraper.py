@@ -207,7 +207,7 @@ class BTMHScraper(BaseScraper):
                     if len(cells) >= 2:
                         # Look for "Nhẫn ép vỉ Vàng Rồng Thăng Long"
                         product_text = cells[0].get_text(strip=True)
-                        if "Nhẫn ép vỉ" in product_text and "Rồng Thăng Long" in product_text:
+                        if "Kim Gia Bảo" in product_text and "24K" in product_text:
                             buy_price = self._parse_price(cells[1].get_text(strip=True))
                             
                             # Apply multiplier

@@ -487,7 +487,7 @@ def render_asset_table():
         data.append(row)
     
     df = pd.DataFrame(data)
-    st.dataframe(df, width="stretch", hide_index=True, use_container_width=True)
+    st.dataframe(df, width="stretch", hide_index=True)
     
     # Delete buttons section
     st.markdown("---")
