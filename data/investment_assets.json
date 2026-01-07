@@ -20,5 +20,16 @@
     "purchase_price": 2866000.0,
     "purchase_date": "2026-01-02",
     "created_at": "2026-01-06T16:58:20.704842"
+  },
+  {
+    "id": "investment_20260107145345800390",
+    "name": "Bạc a Giang",
+    "asset_type": "silver",
+    "quantity": 3.0,
+    "unit": "luong",
+    "reference": "Ancarat",
+    "purchase_price": 3206000.0,
+    "purchase_date": "2026-01-07",
+    "created_at": "2026-01-07T14:53:45.800423"
   }
 ]

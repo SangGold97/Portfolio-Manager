@@ -272,7 +272,9 @@ class PhuQuyScraper(BaseScraper):
                             raw_price = self._parse_price(cells[1].get_text(strip=True))
                             
                             # If price is less than 10,000,000 VND, multiply by 10
-                            if raw_price < 10_000_000:
+                            if raw_price < 1000000:
+                                buy_price = raw_price * 100
+                            elif raw_price < 10000000:
                                 buy_price = raw_price * 10
                             else:
                                 buy_price = raw_price
